@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online vizitka</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+    --bg-dark: #050608;
+    --bg-card: #1f1f22;
+    --text-primary: #ffffff;
+    --text-secondary: #c0c0c0;
+    --accent: #00bfff;
+    --accent-hover: #33ccff;
+    --circuit: #00ff88;
+}
+
+/* moderné pcb pozadie – jemná mriežka s diagonálnymi spojmi */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    /* animovaný farebný gradient */
+    background: linear-gradient(-45deg, #00bfff, #7f5af0, #00ff88, #ff6ec7);
+    background-size: 400% 400%;
+    animation: gradientMove 18s ease infinite;
+}
+
+/* animácia hue pozadia */
+@keyframes gradientMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* karta vizitky */
+.card {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    width: 90%;
+    max-width: 440px;
+    padding: 2.4rem 2.3rem 2.2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* jemný farebný prúžok hore */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #00ff88, #00bfff, #7f5af0);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.95);
+}
+
+h1 {
+    font-size: 2.1rem;
+    margin: 0.7rem 0 0.3rem;
+    color: var(--text-primary);
+}
+
+.title {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.4rem;
+}
+
+.about {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 auto 1.8rem;
+    max-width: 30rem;
+}
+
+/* nadpisy sekcií */
+.section-title {
+    text-align: left;
+    font-weight: 700;
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: var(--accent);
+}
+
+.section-body {
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* záujmy */
+.interests ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+.interests li {
+    margin-bottom: 0.2rem;
+}
+
+/* certifikáty */
+.certificates ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+.certificates li {
+    margin-bottom: 0.2rem;
+}
+
+/* sociálne siete */
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.6rem;
+}
+.social a {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+.social a:hover {
+    color: var(--accent-hover);
+    transform: translateY(-2px) scale(1.15);
+}
+
+/* tlačidlo kontakt */
+button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.9rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 1.4rem;
+    box-shadow: 0 4px 14px rgba(0,191,255,0.45);
+}
+button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,191,255,0.7);
+}
+
+/* malý footer text */
+.footer-note {
+    margin-top: 0.9rem;
+    font-size: 0.75rem;
+    color: #808080;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1.7rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+</style>
+</head>
+<body>
+<div class="card">
+    <h1>Tomáš Krupa</h1>
+    <div class="title">Študent 3. ročníka bezpečnostného manažmentu na UNIZA</div>
+
+    <p class="about">
+        Momentálne píšem bakalársku prácu o 3D tlači a rázovej odolnosti výtlačkov.
+    </p>
+
+    <!-- Záujmy -->
+    <div class="interests section-body">
+        <div class="section-title">
+            <i class="fas fa-star"></i>
+            <span>Záujmy:</span>
+        </div>
+        <ul>
+            <li>Informačná bezpečnosť</li>
+            <li>Elektrotechnika</li>
+            <li>Elektronika</li>
+            <li>3D tlač</li>
+            <li>Arduino/ESP32</li>
+            <li>IT</li>
+            <li>Webstránky</li>
+        </ul>
+    </div>
+
+    <!-- Certifikáty -->
+    <div class="certificates section-body">
+        <div class="section-title">
+            <i class="fas fa-certificate"></i>
+            <span>Certifikáty:</span>
+        </div>
+        <ul>
+            <li>Cisco CCNA 1</li>
+            <li>Cisco CCNA 2</li>
+            <li>Vyhláška §21 (elektrotechnika)</li>
+        </ul>
+    </div>
+
+    <!-- Sociálne siete -->
+    <div class="social">
+        <a href="https://cz.linkedin.com/in/tom%C3%A1%C5%A1-krupa-762126b4?trk=people-guest_people_search-card"
+           aria-label="LinkedIn"
+           target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/JabbieSVK"
+           aria-label="GitHub"
+           target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1ZZss5LQhG/"
+           aria-label="Facebook"
+           target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook"></i>
+        </a>
+    </div>
+
+    <button onclick="showContact()">Kontaktujte ma</button>
+
+    <div class="footer-note">
+        Vizitka vytvorená ako školský projekt (HTML &amp; CSS).
+    </div>
+</div>
+
+<script>
+function showContact() {
+    const email = "tomas.krupa456@gmail.com";
+    const phone = "+421 902 313 829";
+    alert(`E‑mail: ${email}\nTelefón: ${phone}`);
+}
+</script>
+</body>
+</html>
